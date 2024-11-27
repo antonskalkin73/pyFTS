@@ -211,7 +211,7 @@ class MVFTS(fts.FTS):
 
             new_data_point[self.target_variable.data_label] = tmp
 
-            ndata = ndata.append(new_data_point, ignore_index=True)
+            ndata = pd.concat([ndata, pd.DataFrame([new_data_point])], ignore_index=True)
 
         return ret[-steps:]
 
@@ -307,8 +307,8 @@ class MVFTS(fts.FTS):
             new_data_point_lo[self.target_variable.data_label] = min(tmp_lo)
             new_data_point_up[self.target_variable.data_label] = max(tmp_up)
 
-            lo = lo.append(new_data_point_lo, ignore_index=True)
-            up = up.append(new_data_point_up, ignore_index=True)
+            lo = pd.concat([lo, pd.DataFrame([new_data_point_lo])], ignore_index=True)
+            up = pd.concat([up, pd.DataFrame([new_data_point_up])], ignore_index=True)
 
         return ret[-steps:]
 

@@ -19,13 +19,13 @@ class HuarngPartitioner(partitioner.Partitioner):
     def build(self, data):
         diff = Transformations.Differential(1)
         data2 = diff.apply(data)
-        davg = np.abs( np.mean(data2) / 2 )
+        divs = np.abs( np.mean(data2) / 2 )
 
-        if davg <= 1.0:
+        if divs <= 1.0:
             base = 0.1
-        elif 1 < davg <= 10:
+        elif 1 < divs <= 10:
             base = 1.0
-        elif 10 < davg <= 100:
+        elif 10 < divs <= 100:
             base = 10
         else:
             base = 100

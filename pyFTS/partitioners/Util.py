@@ -18,19 +18,20 @@ all_methods = [Grid.GridPartitioner, Entropy.EntropyPartitioner, FCM.FCMPartitio
 mfs = [Membership.trimf, Membership.gaussmf, Membership.trapmf]
 
 
-def plot_sets(data, sets: dict, titles : list, size=[12, 10], save=False, file=None, axis=None):
+def plot_sets(sets: dict, titles : list, size=[12, 10], save=False, file=None, axis=None):
     """
     Plot all fuzzy sets in a Partitioner
     
     """
     num = len(sets)
+    num_cols_plot = 1
 
     if axis is None:
-        fig, axes = plt.subplots(nrows=num, ncols=1,figsize=size)
-    for k in np.arange(0,num):
+        fig, axes = plt.subplots(nrows=num, ncols=num_cols_plot, figsize=size, squeeze=False)
+    for k in range(num):
         ticks = []
         x = []
-        ax = axes[k] if axis is None else axis
+        ax = axes[k, num_cols_plot-1] if axis is None else axis
         ax.set_title(titles[k])
         ax.set_ylim([0, 1.1])
         for key in sets[k].keys():
@@ -54,7 +55,7 @@ def plot_sets(data, sets: dict, titles : list, size=[12, 10], save=False, file=N
         Util.show_and_save_image(fig, file, save)
 
 
-def plot_partitioners(data, objs, tam=[12, 10], save=False, file=None, axis=None):
+def plot_partitioners(objs, tam=[12, 10], save=False, file=None, axis=None):
     sets = [k.sets for k in objs]
     titles = [k.name for k in objs]
     plot_sets(sets, titles, tam, save, file, axis)

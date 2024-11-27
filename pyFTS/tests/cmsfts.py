@@ -11,7 +11,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import datetime
 
 import pandas as pd
-from pyFTS.partitioners import Grid, CMeans, FCM, Entropy
+from pyFTS.partitioners import Grid, KMeans, FCM, Entropy
 from pyFTS.common import FLR, FuzzySet, Membership, Transformations, Util, fts
 from pyFTS import sfts
 from pyFTS.models import msfts

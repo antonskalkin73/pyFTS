@@ -28,10 +28,10 @@ pyFTS.partitioners.Class module
     :undoc-members:
     :show-inheritance:
 
-pyFTS.partitioners.CMeans module
+pyFTS.partitioners.KMeans module
 --------------------------------
 
-.. automodule:: pyFTS.partitioners.CMeans
+.. automodule:: pyFTS.partitioners.KMeans
     :members:
     :undoc-members:
     :show-inheritance:

@@ -146,7 +146,7 @@ class ClusteredMVFTS(mvfts.MVFTS):
 
             new_data_point[self.target_variable.data_label] = tmp.expected_value()
 
-            sample = sample.append(new_data_point, ignore_index=True)
+            sample = pd.concat([sample, pd.DataFrame([new_data_point])], ignore_index=True)
 
         return ret[-steps:]
 
@@ -199,7 +199,7 @@ class ClusteredMVFTS(mvfts.MVFTS):
         for k in np.arange(0, steps):
             sample = ret.iloc[k:self.order+k]
             tmp = self.forecast_multivariate(sample, **kwargs)
-            ret = ret.append(tmp, ignore_index=True)
+            ret = pd.concat([ret, pd.DataFrame([tmp])], ignore_index=True)
 
         return ret
 

@@ -1,6 +1,7 @@
 from pyFTS.common import FuzzySet, Membership
 import numpy as np
 from scipy.spatial import KDTree
+import warnings
 
 
 class Partitioner(object):
@@ -45,6 +46,9 @@ class Partitioner(object):
         if kwargs.get('preprocess',True):
 
             data = kwargs.get('data',[None])
+
+            if isinstance(data, np.ndarray) and len(data.shape) > 1:
+                warnings.warn(f"An ndarray of dimension greater than 1 is used. shape.len(): {len(data.shape)}")
 
             if self.indexer is not None:
                 ndata = self.indexer.get_data(data)

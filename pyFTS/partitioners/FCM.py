@@ -36,7 +36,7 @@ def fuzzy_cmeans(k, data, size, m, deltadist=0.001):
     centroids = [data[rnd.randint(0, data_length - 1)] for kk in range(0, k)]
 
     # Membership table
-    membership_table = np.zeros((k, data_length)) #[[0 for kk in range(0, k)] for xx in range(0, data_length)]
+    membership_table = np.zeros((data_length, k))
 
     mean_change = 1000
 
@@ -50,12 +50,12 @@ def fuzzy_cmeans(k, data, size, m, deltadist=0.001):
         inst_count = 0
         for instance in data:
 
-            dist_groups = np.zeros(k) #[0 for xx in range(0, k)]
+            dist_groups = np.zeros(k)
 
             for group_count, group in enumerate(centroids):
                 dist_groups[group_count] = fuzzy_distance(group, instance)
 
-            dist_groups_total = functools.reduce(operator.add, [xk for xk in dist_groups])
+            # dist_groups_total = functools.reduce(operator.add, [xk for xk in dist_groups])
 
             for grp in range(0, k):
                 if dist_groups[grp] == 0:

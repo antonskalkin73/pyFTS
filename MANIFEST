@@ -104,7 +104,7 @@ pyFTS/models/seasonal/common.py
 pyFTS/models/seasonal/msfts.py
 pyFTS/models/seasonal/partitioner.py
 pyFTS/models/seasonal/sfts.py
-pyFTS/partitioners/CMeans.py
+pyFTS/partitioners/KMeans.py
 pyFTS/partitioners/Entropy.py
 pyFTS/partitioners/FCM.py
 pyFTS/partitioners/Grid.py
